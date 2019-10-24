@@ -1,0 +1,389 @@
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#fff">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/travelpoint"
+        android:layout_gravity="center"></ImageView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email ID"
+                android:id="@+id/Emaillog"
+                android:layout_marginTop="10dp"></EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:id="@+id/pass"
+                android:layout_marginTop="10dp"></EditText>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round"
+                android:layout_marginTop="10dp"
+                android:text="LogIN"
+                android:textColor="#fff"
+              android:id="@+id/Login"></Button>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
+activity_main2.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/travelpoint"
+        android:layout_gravity="center"></ImageView>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email_ID"
+                android:id="@+id/emailid"
+                android:layout_marginTop="5dp"></EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:id="@+id/password1"
+                android:layout_marginTop="5dp"></EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:id="@+id/Neame"
+                android:layout_marginTop="5dp"></EditText>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round"
+                android:layout_marginTop="10dp"
+                android:text="Registration"
+                android:id="@+id/Registration"
+                android:textColor="#fff"></Button>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round"
+                android:layout_marginTop="10dp"
+                android:text="Login"
+                android:id="@+id/Login1"
+                android:textColor="#fff"></Button>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20sp"
+        android:id="@+id/progress"
+        android:layout_gravity="center"
+        android:progress="80"
+        android:progressDrawable="@drawable/ring"
+        ></ProgressBar>
+
+    <TextView
+        text="%"
+        android:layout_width="258dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="#2196F3"
+        android:id="@+id/txt"
+        android:textSize="25dp"></TextView>
+
+
+</LinearLayout>
+activity_main3.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main3Activity">
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/travelpoint"
+      android:layout_gravity="center"
+        android:layout_marginLeft="50dp"></ImageView>
+
+</LinearLayout>
+Main2Activity.java
+package com.visitng.interviewproject;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.provider.ContactsContract;
+import android.service.notification.ConditionProviderService;
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.LinearInterpolator;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.agrawalsuneet.dotsloader.loaders.LazyLoader;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
+
+public class Main2Activity extends AppCompatActivity {
+
+
+        EditText email,password,Name;
+        Button registration,login;
+        ProgressBar p;
+        Boolean isActive;
+        int i=0;
+        Handler h = new Handler();
+        TextView t;
+        Intent intent;
+
+    private ProgressBar progressBar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        email = findViewById(R.id.emailid);
+        p = findViewById(R.id.progress);
+        Name = findViewById(R.id.Neame);
+        password = findViewById(R.id.password1);
+        t=findViewById(R.id.txt);
+        login = (Button) findViewById(R.id.Login1);
+        registration = (Button) findViewById(R.id.Registration);
+        registration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(email.getText().toString())) {
+
+                    Toast.makeText(Main2Activity.this, "Please Enter the Email", Toast.LENGTH_SHORT).show();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches())
+                {
+                   Toast.makeText(Main2Activity.this, "Please Enter valid Email", Toast.LENGTH_SHORT).show();
+                }
+                 else if(TextUtils.isEmpty(password.getText().toString())) {
+                    Toast.makeText(Main2Activity.this, "Plaese enter Password", Toast.LENGTH_SHORT).show();
+                }
+                else if (password.getText().toString().length() <= 6) {
+                    Toast.makeText(Main2Activity.this, "Enter More than 6 digit password", Toast.LENGTH_SHORT).show();
+                }
+                else if (TextUtils.isEmpty(Name.getText().toString())) {
+                    Toast.makeText(Main2Activity.this, "Plaese enter Name", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    registration();
+
+                }
+                if (v.getId()==R.id.Registration)
+                    if(isActive){
+                        Thread hilo = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                h.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        t.setText(i+"%");
+                                        p.setProgress(i);
+
+                                    }
+                                });{
+                                    try {
+                                        Thread.sleep(100);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    if (i==100){
+                                     intent=new Intent(Main2Activity.this,MainActivity.class);
+                                     startActivity(intent);
+
+                                    }
+                                    i++;
+                                    isActive=true;
+                                }
+
+                            }
+                        });
+                        hilo.start();
+                    }
+            }
+        });
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main2Activity.this,MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+        }
+
+    private void registration() {
+
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString())
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) { Toast.makeText(Main2Activity.this,"Registration Successful",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Main2Activity.this,MainActivity.class);
+                        startActivity(intent);
+
+                    }
+
+
+                }
+                       )
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Main2Activity.this,"Failed:"+e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+    }
+MainActivity.java
+package com.visitng.interviewproject;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+
+public class MainActivity extends AppCompatActivity {
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+
+
+        }
+
+    }
+Main3Activity.java
+package com.visitng.interviewproject;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class Main3Activity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main3);
+    }
+}
+Manifest.xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.visitng.interviewproject">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/AppName"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:remove="AppName">
+        <activity android:name=".imagan"></activity>
+        <activity android:name=".Main3Activity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Main2Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
