@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <SeekBar
+        android:id="@+id/seekBarTimeTables"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        />
+
+    <ListView
+        android:id="@+id/listViewTimeTable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/seekBarTimeTables"
+        android:layout_marginTop="10dp">
+
+    </ListView>
+</RelativeLayout>
+
+
+Java File 
+package com.skillshipfoundation.studenttimetable;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SeekBar;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+    ListView listViewTimeTable;
+    SeekBar seekBarTimeTables;
+
+    // TODO: 7/20/2019 last one for the reducing the duplicatge code we create new function
+    public void GenerateTimeTable(int timeTable){
+
+        // no need to declare int timeTable here because we are passing in the parameter
+        ArrayList<String> timeTableContents = new ArrayList<>();
+
+        for (int i =1; i<= 10; i++){
+            // using for 10 times tables if you used it goes to 3 times
+            timeTableContents.add(Integer.toString(i * timeTable));
+        }
+
+        // TODO: 7/20/2019  addding content to the list view
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,timeTableContents);
+        listViewTimeTable.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+
+        // TODO: 7/20/2019 step 1 finding the views
+
+        listViewTimeTable = (ListView)findViewById(R.id.listViewTimeTable);
+        seekBarTimeTables = (SeekBar) findViewById(R.id.seekBarTimeTables);
+
+        // TODO: 7/20/2019 setting the limit and the progres of the seekBar
+
+        seekBarTimeTables.setMax(20);
+        seekBarTimeTables.setProgress(5);
+
+        // TODO: 7/20/2019 working on the seekBar change listner function
+        seekBarTimeTables.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+
+                int min = 1;
+                int timeTable;
+
+                if (progress < min){
+
+                    timeTable = min;
+                    // setting the seekbar at min value
+                    seekBarTimeTables.setProgress(min);
+                }else {
+                    timeTable = progress;
+                }
+
+               GenerateTimeTable(timeTable);
+                //Log.i("SeekBar Value",Integer.toString(timetable));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        GenerateTimeTable(10);
+
+        // defining value to the timetable like 10 we allready used in the setProgress
+//        int timeTable = 5;
+//        ArrayList<String> timeTableContents = new ArrayList<>();
+//
+//        for (int i =1; i<= 10; i++){
+//            // using for 10 times tables if you used it goes to 3 times
+//
+//            timeTableContents.add(Integer.toString(i * timeTable));
+//        }
+//
+//        // TODO: 7/20/2019  addding content to the list view
+//
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,timeTableContents);
+//        listViewTimeTable.setAdapter(arrayAdapter);
+
+    }
+}
